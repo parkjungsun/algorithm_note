@@ -7,9 +7,11 @@
 - iostream, stdio.h, string.h, algorithm,
 
 # 입출력 싱크
+```
 ios_base::sync_with_stdio(false); 
 cin.tie(NULL);
 cout.tie(NULL);
+```
 - 입출력싱크를 맞추는 것을 해제한다. 
 - cin, cout은 c라이브러리인 stdio 버퍼와 동기화하느라 시간을 소비한다.
 
@@ -60,6 +62,7 @@ cout.tie(NULL);
     - atoi(s.c_str()) -> 문자열이면 0 반환, 숫자면 숫자반환
 
 # split() 구현하기 : c++에서는 지원하지 않는다.
+```
 vector<string> split(string input, string delimiter) {
     vector<string> ret;
     long long pos = 0;
@@ -72,7 +75,8 @@ vector<string> split(string input, string delimiter) {
     ret.push_back(input);
     return ret;
 }
-
+```
+    
 # 자료형 
 int 4 byte
 const int INF = 987654321; 
@@ -104,9 +108,11 @@ memcpy(dest, source, size);
 
 sort(first, last, *커스텀 비교함수) -> O(nlogn)
 // less<int>(), greater<int>()
+```
 // bool cmp(pair<int, int> a, pair<int, int> b) {
 //    return a.first > b.first;
 // }
+```
 
 unique(v.begin(), v.end())
 - 중복되지 않은 요소로 채우고, 그 다음 이터레이터 반환한다.
@@ -168,6 +174,7 @@ if(mp.find(1) == mp.end()) {
 - push_back(), push_front(), front(), back(), size(), pop_front(), pop_back()
 
 # 구조체
+```
 struct Point {
     int y, x;
     Point(int y, int x) : y(y), x(x)
@@ -177,6 +184,7 @@ struct Point {
         return x < a.x;
     }
 }
+```
 
 # priority queue<자료형, 컨테이너, 비교함수>
 - 요소에 어떠한 우선순위가 추가로 부여되어 있는 컨테이너
@@ -189,6 +197,7 @@ struct Point {
 # 순열
 - 아래 함수를 사용할 때는, 알맞은 정렬을 한 후에 써야 순열이 나온다.
 - next_permutation : 오름차순 배열 기반으로 순열 만듬
+```
     void printV(vector<int> &v) {
         for(int i=0; i < v.size(); i++) {
             cout << v[i] << " ";
@@ -197,11 +206,15 @@ struct Point {
     do {
         printV(v);
     } while (next_permutation(v.begin(), v.end()))
+```
 - prev_permutation : 내림차순 배열 기반으로 순열 만듬
+```
     do {
         printV(v);
     } while (prev_permutation(v.begin(), v.end()))
+```
 - 재귀를 이용한 순열 
+```
     void makePermutation(int n, int r, int depth) {
         if(r == depth) {
             printV(v);
@@ -214,9 +227,11 @@ struct Point {
         }
         return 0;
     }
+```
 
 # 조합
 - 재귀를 이용한 조합
+```
     void combi(int start, vector<int> b) {
         if(b.size() == k) {
             print(b);
@@ -229,22 +244,28 @@ struct Point {
         }
         return;
     }
+```
 
 # 정수론
 - 최대공약수 gcd
+```
     int gcd(int a, int b) /* a < b */ {
         if ( a == 0 ) return b;
         return gcd( b % a, a);
     }
+```
 - 최소공배수 lcm
+```
     int lcm(int a, int b) {
         return (a * b) / gcd(a * b);
     }
+```
 
 # 에라토스테네스의 체
 - 소수가 아닌 값들에 대한 불리언 배열을 만들어 소수만을 걸러낼 수 있는 방법
 
 - 소수 판별
+```
 bool check(int n) {
     if (n <= 1) return 0;
     if (n == 2) return 1;
@@ -254,6 +275,7 @@ bool check(int n) {
     }
     return 1;
 }
+```
 
 # 시계방향과 반시계방향 회전, rotate(first, middle, last)
 - middle이 first로 가면서 회전하는 것
