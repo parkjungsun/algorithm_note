@@ -269,6 +269,7 @@ bool check(int n) {
 # 배열 90도 회전
 <pre>
 <code>
+
 void rotate90(vector<vector<int>> &key) {
     int m = key.size();
     /* m * m 크기 배열 */
@@ -280,5 +281,6 @@ void rotate90(vector<vector<int>> &key) {
         }
     }
 }
+
 </code>
 </pre>
