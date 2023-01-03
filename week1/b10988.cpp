@@ -21,6 +21,13 @@ void solve() {
     }
 }
 
+void best_solve() {
+    string tmp = paragraph;
+    reverse(tmp.begin(), tmp.end());
+    if(tmp == paragraph) cout << "1" << "\n";
+    else cout << "0" << "\n";
+}
+
 void input_by_cmd() {
     getline(cin, paragraph);
 }
@@ -47,8 +54,9 @@ int main() {
     input_by_cmd();
     //input_by_case1();
     //input_by_case2();
-    solve();
-    output();
+    //solve();
+    //output();
+    best_solve();
 
     return 0;
 }
