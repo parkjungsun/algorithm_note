@@ -1,4 +1,14 @@
-/* 백준 2178 |  https://www.acmicpc.net/problem/2178 */
+/* 백준 2178 | 미로 탐색 https://www.acmicpc.net/problem/2178 */
+
+/*
+    (1,1) -> (n,m)
+    1. BFS 거리 탐색
+        1) 갈 수 있는가
+        2) 자기보다 큰가 -> 업데이트
+    2. 미로 범위
+        1) 1 <= x <= m
+        2) 1 <= y <=n
+*/
 
 #include<bits/stdc++.h>
 #include<string.h>
@@ -6,34 +16,85 @@
 #include<iostream>
 #include<stdio.h>
 
-using namespace std; 
-const int max_n = 104; 
-int dy[4] = {-1, 0, 1, 0};
-int dx[4] = {0, 1, 0, -1}; 
-int n, m, a[max_n][max_n], visited[max_n][max_n], y, x; 
-int main(){ 
-    scanf("%d %d", &n, &m); 
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
-            scanf("%1d", &a[i][j]);
+using namespace std;
+
+int n, m;
+int _map[105][105] = { 0, };
+int visited[105][105] = { 0, };
+
+void printM();
+
+void solve(int y, int x) {
+    //printM();
+    // 상
+    if(y-1 >= 1 && _map[y-1][x] != 0) {
+        if(visited[y-1][x] == 0 || visited[y-1][x] > visited[y][x] + 1) {
+            visited[y-1][x] = visited[y][x] + 1;
+            solve(y-1, x);
         }
-    } 
-    queue<pair<int, int>> q;  
-    visited[0][0] = 1;
-    q.push({0, 0});  
-    while(q.size()){
-        tie(y, x) = q.front(); q.pop(); 
-        for(int i = 0; i < 4; i++){
-            int ny = y + dy[i]; 
-            int nx = x + dx[i]; 
-            if(ny < 0 || ny >= n || nx < 0 || nx >= m || a[ny][nx] == 0) continue; 
-            if(visited[ny][nx]) continue; 
-            visited[ny][nx] = visited[y][x] + 1; 
-            q.push({ny, nx}); 
-        } 
     }
-    printf("%d", visited[n - 1][m - 1]); 
+    // 하
+    if(y+1 <= n && _map[y+1][x] != 0) {
+        if(visited[y+1][x] == 0 || visited[y+1][x] > visited[y][x] + 1) {
+            visited[y+1][x] = visited[y][x] + 1;
+            solve(y+1, x);
+        }
+    }
+    // 좌
+    if(x-1 >= 1 && _map[y][x-1] != 0) {
+        if(visited[y][x-1] == 0 || visited[y][x-1] > visited[y][x] + 1) {
+            visited[y][x-1] = visited[y][x] + 1;
+            solve(y, x-1);
+        }
+    }
+    // 우
+    if(x+1 <=m && _map[y][x+1] != 0) {
+        if(visited[y][x+1] == 0 || visited[y][x+1] > visited[y][x] + 1) {
+            visited[y][x+1] = visited[y][x] + 1;
+            solve(y, x+1);
+        }
+    }
+}
+
+void input_by_cmd() {
+    cin >> n >> m;
+
+    string tmp;    
+    for(int i=1; i<=n; i++) {
+        cin >> tmp;
+
+        for(int j=1; j<=m; j++) {
+            _map[i][j] = tmp[j-1] - '0';
+        }
+    }
+}
+
+void output() {
+    cout << visited[n][m] << "\n";
+}
+
+void printM() {
+    for(int i=1; i<=n; i++) {
+        for(int j=1; j<=m; j++) {
+            cout << visited[i][j] << " "; 
+        }
+        cout << "\n";
+    }
+    cout << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+
+    input_by_cmd();
+    
+    visited[1][1] = 1;
+    solve(1,1);
+
+    output();
+
     return 0;
-}  
+}
 
 
