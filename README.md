@@ -1,4 +1,4 @@
-### algorithm_note
+## algorithm_note
 # week 1
   - 기간 : '23.1.1 ~ 17
   - 개념 : [알고리즘 C++ 기본](https://github.com/parkjungsun/algorithm_note/tree/main/week1/topic.md)
