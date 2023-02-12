@@ -1,4 +1,4 @@
-/* 백준 1068 | 치즈 https://www.acmicpc.net/problem/1068 */
+/* 백준 1068 | 트리 https://www.acmicpc.net/problem/1068 */
 
 /* 
 */
