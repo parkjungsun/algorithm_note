@@ -30,7 +30,7 @@ cout.tie(NULL);
         (stack, queue -> deque), (priority_queue -> vector)
 
 - 이터레이터
-    - 컨테이너에 저장되어 있는 요소의 주소를 가리키는 개체를 말하며 포인터를    일반화 한 것이다. vector, map 등에서 이터레이터를 통해 쉽게 순회
+    - 컨테이너에 저장되어 있는 요소의 주소를 가리키는 개체를 말하며 포인터를 일반화 한 것이다. vector, map 등에서 이터레이터를 통해 쉽게 순회
     - &* 를 통해 해당 요소의 주소값 반환
     - vector<int>::iterator 
     - v.begin() - 시작위치, v.end() - 끝 위치, 
